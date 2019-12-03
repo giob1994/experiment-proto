@@ -1,0 +1,27 @@
+<header class="content-vertical-center content-horizontal-center" style="max-height: 80px;">
+    <div>
+        <h1>Prediction Task ${ parameters.value }</h1>
+    </div>
+    <span style="width: 10%;"></span> 
+    <p id="debug-info" style="color: darkgray; font-size: smaller;">   
+        Debug Info:
+        Trial ID = ${parameters.trial_id}, 
+        Rule = ${parameters.trial_rule},
+        Trial INIT = ${parameters.trial_init}
+    </p>
+</header>
+<main>
+    <p>
+        Please select the forecast that you would like to submit &mdash; <span
+            style="font-style: italic; color: tomato;">NOTE: Your submission is final.</span>
+    </p>
+    <!-- Include the plot of the data  -->
+    <div id="container" style="min-width: 320px; min-height: 600px; width: 90%; margin: 0 auto">
+    </div>
+    <form>
+        Your forecast:
+        <input id="selection-box" name="forecast" type="text" disabled="true" placeholder="None..."
+            style="width: 6em; color: black; font-weight: bold; text-align: center; font-size: 1.2rem;">
+        <button id="submit-button" type="submit" style="font-size: 1.2rem; margin-left: 1rem; padding-left: 0.5rem; padding-right: 0.5rem;">Submit Forecast</button>
+    </form>
+</main>
