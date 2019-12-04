@@ -179,5 +179,5 @@ var csvParseOptions = {
   }
 }
 
-var csvFile = window.location.href + "data.test_sessions.csv";
+var csvFile = window.location.href + "data.test_sessions_new.csv";
 var localCsv = Papa.parse(csvFile, csvParseOptions);

@@ -20,12 +20,12 @@ function makeChart(lineColor, data) {
 
     var yAxisMaxValue = data.reduce(function (a, b) {
         return Math.max(a, b[1]);
-    }, initialValue = 60) + 5;
+    }, initialValue = 0) + 1;
     var yAxisMinValue = data.reduce(function (a, b) {
         return Math.min(a, b[1]);
-    }, initialValue = 60) - 5;
+    }, initialValue = 1000) - 1;
 
-    console.log("y: " + yAxisMaxValue + "/" + yAxisMinValue)
+    //console.log("y: " + Math.round(yAxisMaxValue) + "/" + Math.round(yAxisMinValue))
 
     //var selectedPoint = [];
 
@@ -75,28 +75,45 @@ function makeChart(lineColor, data) {
             tickInterval: 5,
             gridLineWidth: 1,
             title: {
-                text: 'Time'
+                text: 'Time',
+                style: {
+                    fontSize:'18px'
+                }
             },
             plotLines: [{
                 color: 'grey', // Color value
                 dashStyle: 'ShortDot', // Style of the plot line. Default to solid
                 value: xAxisMaxValue, // Value of where the line will appear
                 width: 1.5 // Width of the line    
-            }]
+            }],
+            labels: {
+                style: {
+                    fontSize:'15px'
+                }
+            }
         },
         yAxis: {
             //tickInterval: 30,
             tickAmount: 3,
             title: {
-                text: 'Price'
+                text: 'Price',
+                style: {
+                    fontSize:'18px'
+                }
             },
             plotLines: [{
                 value: 0,
                 width: 1,
                 color: '#808080'
             }],
-            max: yAxisMaxValue,
-            min: yAxisMinValue
+            max: Math.round(yAxisMaxValue),
+            min: Math.round(yAxisMinValue),
+            minRange: 1,
+            labels: {
+                style: {
+                    fontSize:'15px'
+                }
+            }
         },
         data: {
             firstRowAsNames: false,
@@ -110,6 +127,22 @@ function makeChart(lineColor, data) {
             snap: 20,
             hideDelay: 300
         },
+        annotations: [{
+            labelOptions: {
+                backgroundColor: 'rgba(255,255,255,0.5)',
+                verticalAlign: 'top',
+                y: 15
+            },
+            labels: [{
+                point: {
+                    xAxis: 0,
+                    yAxis: 0,
+                    x: xAxisMaxValue,
+                    y: 80
+                },
+                text: 'HEllo'
+            }]
+        }],
         plotOptions: {
             series: {
                 marker: {
